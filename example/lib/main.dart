@@ -42,6 +42,9 @@ class MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TextFormField(
+            decoration: const InputDecoration(
+              hintText: 'Required, MaxLength check',
+            ),
             validator: (value) {
               return Validator.validate(value, [
                 Required("Input required"),
@@ -50,6 +53,9 @@ class MyCustomFormState extends State<MyCustomForm> {
             },
           ),
           TextFormField(
+            decoration: const InputDecoration(
+              hintText: 'Required, ValidDateFormat, MaxAge and MinLength check',
+            ),
             validator: (value) {
               return Validator.validate(value, [
                 Required("Input is required"),
