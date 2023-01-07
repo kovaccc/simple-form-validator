@@ -1,4 +1,4 @@
-# form_validator
+# simple_form_validator
 
 Package for simple form field validation of flutter form fields.
 
@@ -114,23 +114,24 @@ Example:
  test
 ('calling validate with value that does match Required but not MinLength will return MinLength error message',
 () {
-expect(
-"Invalid minimal length",
-Validator.validate("mat", [
-Required("Input is required"),
-MinLength(5, "Invalid minimal length")
-]));
+  expect(
+        "Invalid minimal length",
+        Validator.validate("mat", [
+          Required("Input is required"),
+          MinLength(5, "Invalid minimal length")
+  ]));
 });
 
 test
 ('calling validate with value that does match Required and MinLength will return null',
 () {
-expect(
-null,
-Validator.validate("matej", [
-Required("Input is required"),
-MinLength(5, "Invalid minimal length")
-]));
+  expect(
+        null,
+        Validator.validate("matej", [
+        Required("Input is required"),
+        MinLength(5, "Invalid minimal length")
+  ]));
+});
 ```
 ## Notes
 
