@@ -1,5 +1,7 @@
 import 'validation_type.dart';
 
+/// Class that contains [validate] method which will validate input value with given [validationTypes]. It will return
+/// null or error message of first [ValidationType] that [inputValue] does not satisfy
 abstract class Validator {
   static String? validate(
       String? inputValue, List<ValidationType> validationTypes) {

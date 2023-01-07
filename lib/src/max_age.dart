@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'time_constants.dart';
 import 'validation_type.dart';
 
+/// Value is a date that must match [dateFormat] and be younger than [maxYears]
 class MaxAge extends ValidationType {
   final int maxYears;
   final String dateFormat;

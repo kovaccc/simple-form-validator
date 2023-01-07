@@ -1,5 +1,6 @@
 import 'validation_type.dart';
 
+/// Value length must be greater than [length]
 class MinLength extends ValidationType {
   final int length;
 

@@ -1,5 +1,6 @@
 import 'validation_type.dart';
 
+/// Value must match pattern [expression]
 class Regex extends ValidationType {
   final String expression;
 

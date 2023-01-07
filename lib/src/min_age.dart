@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'time_constants.dart';
 import 'validation_type.dart';
 
+/// Value is a date that must match [dateFormat] and be older than [minYears]
 class MinAge extends ValidationType {
   final int minYears;
   final String dateFormat;

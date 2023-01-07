@@ -1,6 +1,7 @@
 import 'validation_type.dart';
 import 'package:intl/intl.dart';
 
+/// Value is a date that must match [dateFormat]
 class ValidDateFormat extends ValidationType {
   final String dateFormat;
 
