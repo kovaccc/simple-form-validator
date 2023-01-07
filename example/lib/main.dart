@@ -54,6 +54,7 @@ class MyCustomFormState extends State<MyCustomForm> {
               return Validator.validate(value, [
                 Required("Input is required"),
                 ValidDateFormat("dd/MM/yyyy", "Invalid date format"),
+                MaxAge(15, "dd/MM/yyyy", "You are too old"),
                 MinLength(2, "Invalid minimum length")
               ]);
             },
