@@ -1,39 +1,154 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# form_validator
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+Package for simple form field validation of flutter form fields.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+* Only one dependency of [intl](https://pub.dev/packages/intl) package
+* Open source
+* Extensible
+* Test coverage 100%
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+## Example
 
 ```dart
-const like = 'sample';
+  TextFormField
+(
+  validator: (value) {
+return Validator.validate(value, [
+Required("Input is required"),
+ValidDateFormat("dd/MM/yyyy", "Invalid date format"),
+MaxAge(15, "dd/MM/yyyy", "You are too old"),
+MinLength(2, "Invalid minimum length")
+      ]);
+  },
+)
 ```
 
-## Additional information
+<a href="https://form-validator-example.netlify.app/" target="_blank">![live demo](https://img.shields.io/badge/open-live%20demo-blueviolet?style=for-the-badge&logo=netlify)</a>
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+## Getting Started
+
+### Installation
+
+Add `simple_form_validator` as dependency to your flutter project by adding this lines
+to `pubspec.yaml`.
+
+```yaml
+dependencies:
+  simple_form_validator: "0.1.0"
+```
+
+Then run `flutter pub get` to install required dependencies.
+
+### Code
+
+Import `simple_form_validator` package to your dart widgets by writing:
+
+```dart
+import 'package:simple_form_validator/simple_form_validator.dart';
+```
+
+Now you can use Validator class to create validation logic. Here is simple validator that validates
+if input is not null or empty.
+
+```dart
+
+final invalidInput = Validator.validate("", [
+  Required("Input is required"),
+]);
+
+final validInput = Validator.validate("ma", [
+  Required("Input is required"),
+]);
+
+print(invalidInput); // Input is required
+
+print(validInput); // null, means input is valid
+```
+
+## Validation types
+
+### `ValidationType(String errorMessage)`
+
+General class that all validation types need to extend. Error message `errorMessage` that is returned if input
+value doesn't satisfy condition of validation type.
+
+### `MaxAge(int maxYears, String dateFormat, String errorMessage)`
+
+Validates if given date is younger than `maxYears`. It will also return error message if date format
+of input incorrect.
+
+### `MinAge(int minYears, String dateFormat, String errorMessage)`
+
+Validates if given date is older than `minYears`. It will also return error message if date format
+of input is incorrect.
+
+### `MaxLength(int length, String errorMessage)`
+
+Validates if given input length is equal or smaller than `length`.
+
+### `MinLength(int length, String errorMessage)`
+
+Validates if given input length is equal or larger than `length`.
+
+### `Regex(String expression, String errorMessage)`
+
+Validates if given input value matches pattern `expression`.
+
+### `Required(String expression, String errorMessage)`
+
+Validates if given input value is not null or empty.
+
+### `ValidDateFormat(String dateFormat, String errorMessage)`
+
+Validates if given input date matches `dateFormat`.
+
+### `Validator`
+
+Class contains most important method for validation `validate`. If you have different validation
+types given to this method it will return error message of first validation type that input value
+does not satisfy.
+
+Example:
+
+```dart
+ test
+('calling validate with value that does match Required but not MinLength will return MinLength error message',
+() {
+expect(
+"Invalid minimal length",
+Validator.validate("mat", [
+Required("Input is required"),
+MinLength(5, "Invalid minimal length")
+]));
+});
+
+test
+('calling validate with value that does match Required and MinLength will return null',
+() {
+expect(
+null,
+Validator.validate("matej", [
+Required("Input is required"),
+MinLength(5, "Invalid minimal length")
+]));
+```
+## Notes
+
+### Extending `ValidationType`
+
+You can extend `ValidationType` if you need to define and validate some other validation type.
+
+```dart
+class CustomValidationType extends ValidationType {
+  CustomValidationType(super.errorMessage);
+
+  @override
+  bool isValid(String? inputValue) {
+    // TODO implement validation condition
+  }
+}
+```
+
+## Support
+
+If you would like to support this library you can suggest some other validation type that is not yet implemented.

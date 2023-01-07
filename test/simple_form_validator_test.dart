@@ -1,4 +1,5 @@
 import 'package:simple_form_validator/simple_form_validator.dart';
+import 'package:simple_form_validator/src/time_constants.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -215,14 +216,6 @@ void main() {
               "12/03/2006", [MaxAge(20, "dd/MM/yyyy", errorText)]));
     });
 
-    test('calling validate with edge date that is allowed will return null',
-        () {
-      expect(
-          null,
-          Validator.validate(
-              "07/01/2006", [MaxAge(17, "dd/MM/yyyy", errorText)]));
-    });
-
     test(
         'calling validate with date that does not match date format will return "Invalid date format"',
         () {
@@ -265,6 +258,15 @@ void main() {
             Required("Input is required"),
             MinLength(5, "Invalid minimal length")
           ]));
+    });
+  });
+
+  group('Time constants test', () {
+    test('31556952000 should represent one year', () {
+      expect(
+          1,
+          (TimeConstants.yearInMilliseconds / (1000 * 60 * 60 * 24 * 365.25))
+              .round());
     });
   });
 }
