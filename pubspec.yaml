@@ -1,6 +1,6 @@
 name: simple_form_validator
 description: Package for simple form field validation of flutter form fields
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/kovaccc/simple-form-validator
 
 environment:
