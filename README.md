@@ -1,8 +1,12 @@
 # simple_form_validator
 
-Package for simple form field validation of flutter form fields.
+[![pub package](https://img.shields.io/pub/v/form_validator.svg)](https://pub.dev/packages/simple_form_validator)
+[![GitHub](https://github.com/kovaccc/simple-form-validator)](https://github.com/kovaccc/simple-form-validator/blob/main/LICENSE)
+[![GitHub Workflow Status](https://github.com/kovaccc/simple-form-validator/actions)
 
-* Only one dependency of [intl](https://pub.dev/packages/intl) package
+Package for simple validation of flutter form fields.
+
+* Only one dependency of [intl](https://pub.dev/packages/intl) package (required for age validation)
 * Open source
 * Extensible
 * Test coverage 100%
@@ -13,17 +17,15 @@ Package for simple form field validation of flutter form fields.
   TextFormField
 (
   validator: (value) {
-return Validator.validate(value, [
-Required("Input is required"),
-ValidDateFormat("dd/MM/yyyy", "Invalid date format"),
-MaxAge(15, "dd/MM/yyyy", "You are too old"),
-MinLength(2, "Invalid minimum length")
-      ]);
+    return Validator.validate(value, [
+      Required("Input is required"),
+      ValidDateFormat("dd/MM/yyyy", "Invalid date format"),
+      MaxAge(15, "dd/MM/yyyy", "You are too old"),
+      MinLength(2, "Invalid minimum length")
+    ]);
   },
 )
 ```
-
-<a href="https://form-validator-example.netlify.app/" target="_blank">![live demo](https://img.shields.io/badge/open-live%20demo-blueviolet?style=for-the-badge&logo=netlify)</a>
 
 ## Getting Started
 
@@ -34,10 +36,12 @@ to `pubspec.yaml`.
 
 ```yaml
 dependencies:
-  simple_form_validator: "0.1.0"
+  simple_form_validator: "0.1.2"
 ```
 
 Then run `flutter pub get` to install required dependencies.
+
+<small>Check [installation](https://pub.dev/packages/simple_form_validator/install) tab for more information</small>
 
 ### Code
 
