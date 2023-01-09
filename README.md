@@ -35,7 +35,7 @@ to `pubspec.yaml`.
 
 ```yaml
 dependencies:
-  simple_form_validator: "0.1.2"
+  simple_form_validator: "0.1.3"
 ```
 
 Then run `flutter pub get` to install required dependencies.
