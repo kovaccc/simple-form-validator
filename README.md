@@ -1,7 +1,6 @@
 # simple_form_validator
 
-[![pub package](https://img.shields.io/pub/v/form_validator.svg)](https://pub.dev/packages/simple_form_validator)
-[![GitHub](https://github.com/kovaccc/simple-form-validator)](https://github.com/kovaccc/simple-form-validator/blob/main/LICENSE)
+[![GitHub](https://img.shields.io/github/license/kovaccc/simple-form-validator)](https://github.com/kovaccc/simple-form-validator/blob/main/LICENSE)
 
 Package for simple validation of flutter form fields.
 
@@ -35,7 +34,7 @@ to `pubspec.yaml`.
 
 ```yaml
 dependencies:
-  simple_form_validator: "0.1.3"
+  simple_form_validator: "0.1.4"
 ```
 
 Then run `flutter pub get` to install required dependencies.
