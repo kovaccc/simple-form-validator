@@ -2,7 +2,6 @@
 
 [![pub package](https://img.shields.io/pub/v/form_validator.svg)](https://pub.dev/packages/simple_form_validator)
 [![GitHub](https://github.com/kovaccc/simple-form-validator)](https://github.com/kovaccc/simple-form-validator/blob/main/LICENSE)
-[![GitHub Workflow Status](https://github.com/kovaccc/simple-form-validator/actions)
 
 Package for simple validation of flutter form fields.
 
