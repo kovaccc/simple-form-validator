@@ -1,3 +1,7 @@
+## [0.1.3] - 09.01.2023
+
+- Updating Readme.
+
 ## [0.1.2] - 09.01.2023
 
 - Updating dependencies.
