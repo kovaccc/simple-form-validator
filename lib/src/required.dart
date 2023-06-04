@@ -6,6 +6,6 @@ class Required extends ValidationType {
 
   @override
   bool isValid(String? inputValue) {
-    return inputValue != null && inputValue.isNotEmpty;
+    return inputValue != null && inputValue.trim().isNotEmpty;
   }
 }
