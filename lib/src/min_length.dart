@@ -11,6 +11,6 @@ class MinLength extends ValidationType {
     if (inputValue == null && length <= 0) {
       return true;
     }
-    return inputValue == null ? false : inputValue.length >= length;
+    return inputValue == null ? false : inputValue.trim().length >= length;
   }
 }

@@ -17,6 +17,10 @@ void main() {
     test('calling validate with a value will return null', () {
       expect(null, Validator.validate("Valid input", [Required(errorText)]));
     });
+
+    test('calling validate with a value with only spaces', () {
+      expect(errorText, Validator.validate("  ", [Required(errorText)]));
+    });
   });
 
   group('MinLength test', () {
@@ -27,6 +31,11 @@ void main() {
         () {
       expect(errorText, Validator.validate("", [MinLength(1, errorText)]));
     });
+    test(
+        'calling validate with an value with only space while minimal length is 1 will return $errorText',
+        () {
+      expect(errorText, Validator.validate(" ", [MinLength(1, errorText)]));
+    });
 
     test(
         'calling validate with a null value while minimal length is 2 will return $errorText}',
@@ -34,6 +43,11 @@ void main() {
       expect(errorText, Validator.validate(null, [MinLength(2, errorText)]));
     });
 
+    test(
+        'calling validate with a value with only spaces, greater than minimal length will return $errorText',
+        () {
+      expect(errorText, Validator.validate("  ", [MinLength(2, errorText)]));
+    });
     test(
         'calling validate with a null value while minimal length is 0 will return null',
         () {
@@ -44,6 +58,11 @@ void main() {
         'calling validate with some value that matches minimal length will return null',
         () {
       expect(null, Validator.validate("ma", [MinLength(2, errorText)]));
+    });
+    test(
+        'calling validate with some value with trailing space that matches minimal length will return $errorText',
+        () {
+      expect(errorText, Validator.validate("m ", [MinLength(2, errorText)]));
     });
 
     test(
@@ -90,6 +109,12 @@ void main() {
         'calling validate with a value that is greater than maximum length will return $errorText',
         () {
       expect(errorText, Validator.validate("mat", [MaxLength(2, errorText)]));
+    });
+
+    test(
+        'calling validate with an value with only space while minimal length is 1 will return $errorText',
+        () {
+      expect(errorText, Validator.validate(" ", [MinLength(1, errorText)]));
     });
   });
 
